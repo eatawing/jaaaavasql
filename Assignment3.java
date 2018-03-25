@@ -19,6 +19,10 @@ public class Assignment3 extends JDBCSubmission {
         // private final String password = "<add your password>";
         // Connection conn = null;
 
+
+
+        // you may need to set searh sets the search path to parlgov here
+        // https://stackoverflow.com/questions/4168689/is-it-possible-to-specify-the-schema-when-connecting-to-postgres-with-jdbc
         try {
             super.connection = DriverManager.getConnection(url, username, password);
             System.out.println("Connected to the PostgreSQL server successfully.");
@@ -26,14 +30,11 @@ public class Assignment3 extends JDBCSubmission {
         
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
-        catch (ClassNotFoundException ex) 
+        } catch (ClassNotFoundException ex) 
         {
             System.err.println(ex.getMessage());
         }
         return false;
-        
-
     }
 
     @Override
@@ -49,8 +50,38 @@ public class Assignment3 extends JDBCSubmission {
 
     @Override
     public ElectionResult presidentSequence(String countryName) {
-            //Write your code here.
-            return null;
+        List<Integer> presidents = new ArrayList<Integer>();
+        List<String> parties = new ArrayList<String>();
+
+        /* Execute a query and iterate through the resulting tuples. */
+        PreparedStatement execStat = conn.prepareStatement(
+            "select politician_president.id as president_id, politician_president.start_date, 
+                politician_president.party_id, party.party_name,
+                country.country_id, country.country_name
+            from 
+                    politician_president 
+                Natural Join
+                    (select id as country_id, name as country_name 
+                    from country
+                    where name = ?) country
+                Natural Join
+                    (select id as party_id, country_id, name as party_name
+                        from party) party
+            order by start_date DESC");
+
+        execStat.setSting(1, countryName);
+        ResultSet results = execStat.executeQuery();
+        while (results.next()) {
+            String president_id = rs.getString("president_id");
+            String party_name = rs.getString("party_name");
+
+            presidents.add(president_id);
+            parties.add(party_name);
+        }
+
+        JDBCSubmission.ElectionResult er = new JDBCSubmission.ElectionResult(presidents, parties);
+        
+        return er;
 	}
 
     @Override
