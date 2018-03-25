@@ -54,9 +54,45 @@ public class Assignment3 extends JDBCSubmission {
 	}
 
     @Override
-    public List<Integer> findSimilarParties(Integer partyId, Float threshold) {
-	//Write your code here.
-        return null;
+    public List<Integer> findSimilarParties(Integer partyId, Float threshold){
+        PreparedStatement descripStat = conn.prepareStatement(
+            "select description from party where id = ?");
+        descripStat.setInt(1, partyId);
+        descripStat.executeUpdate();
+
+        ResultSet descrip = execStat.descripStat;
+        String description = getString(1);
+
+        PreparedStatement get_party_descrips = conn.prepareStatement(
+            "select id, description from party");
+        ResultSet party_descrips = execStat.get_party_descrip();
+
+        // String description = "";
+        // while (party_descrips.next()) {
+        //     Int id = paty_descrips.party_descrips.getInt(id);
+
+        //     if (partyId == id) {
+        //         description = party_descrips.getString(desription);
+        //         break;
+        //     }
+        // }
+
+        List<Integer> result = new ArrayList<Integer>();
+        party_descrips.first();
+        while (party_descrips.next()) {
+            String des = party_descrips.getString(desription);
+            int id = paty_descrips.party_descrips.getInt(id);
+
+            if (id == partyId) {
+                continue;
+            }
+
+            if (similarity(des, description) > threshold) {
+                result.add(id);
+            }
+        }
+
+        return result;
     }
 
     public static void main(String[] args) throws Exception {
