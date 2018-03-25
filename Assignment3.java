@@ -11,13 +11,10 @@ public class Assignment3 extends JDBCSubmission {
 
     @Override
     public boolean connectDB(String url, String username, String password) {
-	    //write your code here.
-        // private final String url = "jdbc:postgresql://localhost/dvdrental";
-        // private final String user = "postgres";
-        // private final String password = "<add your password>";
-        // Connection conn = null;
-
-
+	    // Format
+        // url = "jdbc:postgresql://localhost/dvdrental";
+        // username = "postgres";
+        // password = "<add your password>";
 
         // you may need to set searh sets the search path to parlgov here
         // https://stackoverflow.com/questions/4168689/is-it-possible-to-specify-the-schema-when-connecting-to-postgres-with-jdbc
@@ -76,48 +73,46 @@ public class Assignment3 extends JDBCSubmission {
             e.printStackTrace();
         }
         return null;
-        
 	}
 
     @Override
     public List<Integer> findSimilarParties(Integer partyId, Float threshold){
-    //     PreparedStatement descripStat = conn.prepareStatement(
-    //         "select description from party where id = ?");
-    //     descripStat.setInt(1, partyId);
-    //     descripStat.executeUpdate();
 
-    //     ResultSet descrip = execStat.descripStat;
-    //     String description = getString(1);
+        try {
+            PreparedStatement descripStat = super.connection.prepareStatement("select description from party where id = ?");
+            descripStat.setInt(1, partyId);
+            String description=null;
+            ResultSet rs = descripStat.executeQuery();
+            List<Integer> retlist = new ArrayList<Integer>();        
+            while (rs.next()) {
+                description = rs.getString("description");
+                // break;
+            }
 
-    //     PreparedStatement get_party_descrips = conn.prepareStatement(
-    //         "select id, description from party");
-    //     ResultSet party_descrips = execStat.get_party_descrip();
+            // if cannot find, return null
+            if(description==null){
+                return retlist;
+            }
 
-    //     // String description = "";
-    //     // while (party_descrips.next()) {
-    //     //     Int id = paty_descrips.party_descrips.getInt(id);
+            PreparedStatement get_party_descrips = super.connection.prepareStatement("select id, description from party");
+            rs = get_party_descrips.executeQuery();
 
-    //     //     if (partyId == id) {
-    //     //         description = party_descrips.getString(desription);
-    //     //         break;
-    //     //     }
-    //     // }
+            // party_descrips.first();
+            while (rs.next()) {
+                String des = rs.getString("description");
+                int id = rs.getInt("id");
 
-    //     List<Integer> result = new ArrayList<Integer>();
-    //     party_descrips.first();
-    //     while (party_descrips.next()) {
-    //         String des = party_descrips.getString(desription);
-    //         int id = paty_descrips.party_descrips.getInt(id);
-
-    //         if (id == partyId) {
-    //             continue;
-    //         }
-
-    //         if (similarity(des, description) > threshold) {
-    //             result.add(id);
-    //         }
-    //     }
-
+                if (id == partyId) {
+                    continue;
+                }
+                if (super.similarity(des, description) > threshold) {
+                    retlist.add(id);
+                }
+            }
+            return retlist;
+        } catch(SQLException e){
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -125,5 +120,4 @@ public class Assignment3 extends JDBCSubmission {
    	    //Write code here. 
 	    System.out.println("Hellow World");
     }
-
 }
