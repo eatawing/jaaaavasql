@@ -11,14 +11,6 @@ public class Assignment3 extends JDBCSubmission {
 
     @Override
     public boolean connectDB(String url, String username, String password) {
-	    // Format
-        // url = "jdbc:postgresql://localhost/dvdrental";
-        // username = "postgres";
-        // password = "<add your password>";
-
-        // you may need to set searh sets the search path to parlgov here
-        // https://stackoverflow.com/questions/4168689/is-it-possible-to-specify-the-schema-when-connecting-to-postgres-with-jdbc
-        
         try {
             super.connection = DriverManager.getConnection(url, username, password);
             System.out.println("Connected to the PostgreSQL server successfully.");
@@ -45,18 +37,24 @@ public class Assignment3 extends JDBCSubmission {
 
     @Override
     public ElectionResult presidentSequence(String countryName) {
-       
-        /* Execute a query and iterate through the resulting tuples. */
         try {
             List<Integer> presidents = new ArrayList<Integer>();
             List<String> parties = new ArrayList<String>();
-            // formator http://web.chacuo.net/formatsql/
-            String sql = "select politician_president.id as president_id, politician_president.start_date, politician_president.party_id, party.party_name, country.country_id, country.country_name from politician_president Natural Join (select id as country_id, name as country_name from country where name = ?) country Natural Join (select id as party_id, country_id, name as party_name from party) party order by start_date DESC";
+            
+            //SQL statements to get the corresponding ids, start dates, party name etc. of each president of the given country.
+            String sql = "select politician_president.id as president_id, politician_president.start_date, " +
+                         "  politician_president.party_id, party.party_name, country.country_id, country.country_name " + 
+                         "from politician_president Natural Join " +
+                         "  (select id as country_id, name as country_name from country where name = ?) country Natural Join " + 
+                         "  (select id as party_id, country_id, name as party_name from party) party " + 
+                         "order by start_date DESC";
     
             PreparedStatement execStat = super.connection.prepareStatement(sql);
 
             execStat.setString(1, countryName);
             ResultSet rs = execStat.executeQuery();
+
+            //iterate through the result set and add them to lists
             while (rs.next()) {
                 int president_id = rs.getInt("president_id");
                 String party_name = rs.getString("party_name");
@@ -77,42 +75,48 @@ public class Assignment3 extends JDBCSubmission {
 
     @Override
     public List<Integer> findSimilarParties(Integer partyId, Float threshold){
-
         try {
+            //SQL statments to get the description of the given partyId.
             PreparedStatement descripStat = super.connection.prepareStatement("select description from party where id = ?");
             descripStat.setInt(1, partyId);
-            String description=null;
             ResultSet rs = descripStat.executeQuery();
+
+            //extract the description into a string.
+            String description = null;
             List<Integer> retlist = new ArrayList<Integer>();        
             while (rs.next()) {
                 description = rs.getString("description");
-                // break;
             }
 
-            // if cannot find, return null
-            if(description==null){
+            //if cannot find, return null
+            if (description == null) {
                 return retlist;
             }
 
             PreparedStatement get_party_descrips = super.connection.prepareStatement("select id, description from party");
             rs = get_party_descrips.executeQuery();
 
-            // party_descrips.first();
+            //iterate through the result set to find party ids with similar descriptions
             while (rs.next()) {
                 String des = rs.getString("description");
                 int id = rs.getInt("id");
 
+                //omit the given party itslef
                 if (id == partyId) {
                     continue;
                 }
+
                 if (super.similarity(des, description) >= threshold) {
+                    //add to result list
                     retlist.add(id);
                 }
             }
+
             return retlist;
         } catch(SQLException e){
             e.printStackTrace();
         }
+        
         return null;
     }
 
