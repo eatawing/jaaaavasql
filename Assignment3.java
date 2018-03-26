@@ -105,7 +105,7 @@ public class Assignment3 extends JDBCSubmission {
                 if (id == partyId) {
                     continue;
                 }
-                if (super.similarity(des, description) > threshold) {
+                if (super.similarity(des, description) >= threshold) {
                     retlist.add(id);
                 }
             }
