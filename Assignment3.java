@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Assignment3 extends JDBCSubmission {
 
     public Assignment3() throws ClassNotFoundException {
-
         Class.forName("org.postgresql.Driver");
     }
 
