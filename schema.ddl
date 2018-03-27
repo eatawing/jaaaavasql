@@ -6,8 +6,6 @@
 -- 2. What constraints that could have been enforced were not enforced? Why not?
 
 
-<<<<<<< HEAD
-=======
 -- https://piazza.com/class/jc8j5fv9n7e39n?cid=787
 -- check the age of cutomer > 0
 -- check the number of seat > 0
@@ -16,7 +14,6 @@
 
 
 
->>>>>>> 0db8249fc093fd9a35fca5aa12d31534974e021a
 drop schema if exists carschema cascade;
 create schema carschema;
 
@@ -55,13 +52,9 @@ create table car(
     model_id INT REFERENCES model(id)
 );
 
-<<<<<<< HEAD
-CREATE TYPE reserv_status AS ENUM('Confirmed', 'Ongoing', 'Completed', 'Cancelled');
-=======
 
 CREATE TYPE reserv_status AS ENUM('Confirmed', 'Ongoing', 'Completed', 'Cancelled');
 
->>>>>>> 0db8249fc093fd9a35fca5aa12d31534974e021a
 
 create table reservation(
     id INT PRIMARY KEY,
@@ -73,16 +66,9 @@ create table reservation(
 );
 
 CREATE TABLE customer_reservation(
-<<<<<<< HEAD
-    customer_email VARCHAR(50) REFERENCES customer(email),
-    reservation_id INT REFERENCES reservation(id),
-    UNIQUE(customer_email, reservation_id)
-);
-=======
  customer_email VARCHAR(50) REFERENCES Customer(email),
  reservation_id INT REFERENCES Reservation(id),
  UNIQUE(customer_email, reservation_id)
 );
 
 
->>>>>>> 0db8249fc093fd9a35fca5aa12d31534974e021a
