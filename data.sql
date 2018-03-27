@@ -11,6 +11,7 @@ insert into customer values ('Yu Chang', 42, 'y.c@mail.com');
 
 
 
+
 -- model
 insert into model values (1, 'BMW X5', 'SUV', 415, 5);
 insert into model values (2, 'Mercedes E400', 'Luxury', 1848, 4);
@@ -38,6 +39,10 @@ insert into car values (123, 'mono202', 1008, 4);
 insert into reservation values (22001, '2017-09-01 09:00:00', '2017-09-03 17:00:00', 101, NULL, 'Completed');
 insert into reservation values (22002, '2018-03-17 16:00:00', '2018-03-25 16:00:00', 101, NULL, 'Cancelled');
 insert into reservation values (22032, '2017-09-22 16:00:00', '2017-09-23 08:00:00', 126, NULL, 'Cancelled');
+insert into reservation values (22014, '2018-02-19 08:00:00', '2018-02-23 20:00:00', 107, NULL, 'Cancelled');
+insert into reservation values (22015, '2018-02-21 08:00:00', '2018-03-10 20:00:00', 107, 22014, 'Ongoing');
+insert into reservation values (22016, '2017-10-09 08:00:00', '2017-10-09 21:00:00', 107, NULL, 'Cancelled');
+insert into reservation values (22017, '2017-10-09 08:00:00', '2017-10-09 21:00:00', 107, 22016, 'Completed');
 -- for shared reservation
 insert into reservation values (22030, '2018-03-26 10:00:00', '2018-03-29 16:00:00', 123, NULL, 'Confirmed');
 
@@ -53,6 +58,11 @@ insert into customer_reservation values ('malik_aa@mail.com', 22032);
 insert into customer_reservation values ('shenian@mail.com', 22030);
 insert into customer_reservation values ('dchen@mail.com', 22030);
 insert into customer_reservation values ('y.c@mail.com', 22030);
+insert into customer_reservation values ('shenian@mail.com', 22014);
+insert into customer_reservation values ('shenian@mail.com', 22015);
+insert into customer_reservation values ('shenian@mail.com', 22016);
+insert into customer_reservation values ('shenian@mail.com', 22017);
+
 
 -- insert into customer_reservation values ('ma.smith@mail.com', 22008);
 -- insert into customer_reservation values ('jparki@mail.com', 22008);

@@ -5,12 +5,6 @@ create table q4(
 	customer_email varchar(50)
 );
 
--- drop view if exists customer_under_30 cascade;
--- create view customer_under_30 as
--- 	select name, email
--- 	from customer
--- 	where age < 30;
-
 -- find changed reservations by customer under 30 in recent 18 months
 drop view if exists count_changed_reserv cascade;
 create view count_changed_reserv as
@@ -18,8 +12,6 @@ create view count_changed_reserv as
 	from reservation r1 join reservation r2
 			on r1.id = r2.old_reservation_id and
 			   extract(month from r1.from_date) >= extract(month from current_timestamp) - 18
-			--    r1.status = 'Cancelled' and 
-	      	--    r2.status <> 'Cancelled'
 		join customer_reservation cr
 			on cr.reservation_id = r1.id
 		join customer c
