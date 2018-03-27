@@ -13,7 +13,6 @@
 -- customers can not reserve a car that is not available in time he/ she want to reserve. (if the status is not cancelled)
 
 
-
 drop schema if exists carschema cascade;
 create schema carschema;
 
@@ -53,6 +52,7 @@ create table car(
 );
 
 
+
 CREATE TYPE reserv_status AS ENUM('Confirmed', 'Ongoing', 'Completed', 'Cancelled');
 
 
@@ -70,5 +70,6 @@ CREATE TABLE customer_reservation(
  reservation_id INT REFERENCES Reservation(id),
  UNIQUE(customer_email, reservation_id)
 );
+
 
 
