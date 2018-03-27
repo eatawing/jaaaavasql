@@ -5,7 +5,6 @@
 -- 2. What constraints that could have been enforced were not enforced? Why not?
 
 
-
 drop schema if exists carschema cascade;
 create schema carschema;
 
@@ -40,7 +39,7 @@ create table car(
     model_id INT references model(id)
 );
 
-CREATE TYPE reser_status AS ENUM('Confirmed', 'Ongoing', 'Completed', 'Cancelled');
+CREATE TYPE reserv_status AS ENUM('Confirmed', 'Ongoing', 'Completed', 'Cancelled');
 
 create table reservation(
     id INT PRIMARY KEY,
@@ -51,18 +50,8 @@ create table reservation(
     status reserv_status not null
 );
 
-CREATE TABLE CustomerReservation(
- customer_email VARCHAR(50) REFERENCES Customer(email),
- reservation_id INT REFERENCES Reservation(id),
- UNIQUE(customer_email, reservation_id)
-);
-
-
-CREATE TABLE RentalStation(
- station_code INT primary key,
- -- The name of the station
- name VARCHAR(50) NOT NULL UNIQUE,
- address VARCHAR(100) NOT NULL,
- area_code VARCHAR(10) NOT NULL,
- city VARCHAR(50) NOT NULL
+CREATE TABLE customer_reservation(
+    customer_email VARCHAR(50) REFERENCES customer(email),
+    reservation_id INT REFERENCES reservation(id),
+    UNIQUE(customer_email, reservation_id)
 );
