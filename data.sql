@@ -7,9 +7,6 @@ insert into customer values ('Malik Abdullah', 27, 'malik_aa@mail.com');
 insert into customer values ('Ian Hsu', 41, 'shenian@mail.com');
 insert into customer values ('David Chen', 45, 'dchen@mail.com');
 insert into customer values ('Yu Chang', 42, 'y.c@mail.com');
-insert into customer values ('Marie Smith', 22, 'ma.smith@mail.com');
-insert into customer values ('John Parkinson', 33, 'jparki@mail.com');
-insert into customer values ('Sanja Hilbert', 23, 's.hilbert@mail.com');
 
 
 
@@ -29,9 +26,6 @@ insert into rental_station values (1009, 'SuperCar West Montreal', '7000 Avenue 
 insert into rental_station values (1008, 'SuperCar North Montreal', '2351 Rue Masson', 'H1Y1V8', 'Montreal');
 
 
-
-
-
 -- car
 insert into car values (101, 'torc566', 1001, 1);
 insert into car values (102, 'torc212', 1001, 8);
@@ -43,12 +37,10 @@ insert into car values (123, 'mono202', 1008, 4);
 -- reservation
 insert into reservation values (22001, '2017-09-01 09:00:00', '2017-09-03 17:00:00', 101, NULL, 'Completed');
 insert into reservation values (22002, '2018-03-17 16:00:00', '2018-03-25 16:00:00', 101, NULL, 'Cancelled');
-insert into reservation values (22003, '2018-03-19 10:00:00', '2018-03-23 20:00:00', 101, 22002, 'Confirmed');
 insert into reservation values (22032, '2017-09-22 16:00:00', '2017-09-23 08:00:00', 126, NULL, 'Cancelled');
 -- for shared reservation
 insert into reservation values (22030, '2018-03-26 10:00:00', '2018-03-29 16:00:00', 123, NULL, 'Confirmed');
-insert into reservation values (22007, '2018-02-23 10:00:00', '2018-03-05 17:00:00', 102, NULL, 'Cancelled');
-insert into reservation values (22008, '2018-03-10 10:00:00', '2018-03-16 20:00:00', 102, 22007, 'Confirmed');
+
 
 
 -- customer_reservation
@@ -61,10 +53,10 @@ insert into customer_reservation values ('malik_aa@mail.com', 22032);
 insert into customer_reservation values ('shenian@mail.com', 22030);
 insert into customer_reservation values ('dchen@mail.com', 22030);
 insert into customer_reservation values ('y.c@mail.com', 22030);
-insert into customer_reservation values ('ma.smith@mail.com', 22007);
-insert into customer_reservation values ('jparki@mail.com', 22007);
-insert into customer_reservation values ('ma.smith@mail.com', 22008);
-insert into customer_reservation values ('jparki@mail.com', 22008);
+
+-- insert into customer_reservation values ('ma.smith@mail.com', 22008);
+-- insert into customer_reservation values ('jparki@mail.com', 22008);
+
 
 -- CUSTORMIZED TEST CASE FOR cus_reservation
 
@@ -75,5 +67,17 @@ insert into customer_reservation values ('jparki@mail.com', 22008);
 -- insert into customer_reservation values ('dchen@mail.com', 30001);
 -- insert into reservation values (30001, '2018-03-26 10:00:00', '2018-03-29 16:00:00', 126, NULL, 'Confirmed');
 -- insert into customer_reservation values ('y.c@mail.com', 30001);
+
+
+
+
+-- CUSTORMIZED TEST CASE FOR q3
+insert into car values (116, 'otta101', 1002, 1);
+insert into reservation values (30009, '2017-09-22 16:00:00', '2017-09-23 08:00:00', 116, NULL, 'Completed');
+
+
+insert into car values (105, 'torbb10', 1002, 2);
+insert into reservation values (30010, '2017-09-22 16:00:00', '2017-09-23 08:00:00', 105, NULL, 'Completed');
+
 
 
