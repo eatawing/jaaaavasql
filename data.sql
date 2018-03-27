@@ -4,9 +4,10 @@
 insert into customer values ('Sofia Jan', 24, 'j.s@mail.com');
 insert into customer values ('Atena Najm', 39, 'a.n@mail.com');
 insert into customer values ('Malik Abdullah', 27, 'malik_aa@mail.com');
-insert into customer values ('Ian Hsu', 41, 'shenian@mail.com');
+insert into customer values ('Ian Hsu', 20, 'shenian@mail.com');
 insert into customer values ('David Chen', 45, 'dchen@mail.com');
 insert into customer values ('Yu Chang', 42, 'y.c@mail.com');
+insert into customer values ('Sanja Hilbert', 23, 's.hilbert@mail.com');
 
 
 
@@ -38,11 +39,12 @@ insert into car values (123, 'mono202', 1008, 4);
 -- reservation
 insert into reservation values (22001, '2017-09-01 09:00:00', '2017-09-03 17:00:00', 101, NULL, 'Completed');
 insert into reservation values (22002, '2018-03-17 16:00:00', '2018-03-25 16:00:00', 101, NULL, 'Cancelled');
+insert into reservation values (22003, '2018-03-19 10:00:00', '2018-03-23 20:00:00', 101, 22002, 'Confirmed');
 insert into reservation values (22032, '2017-09-22 16:00:00', '2017-09-23 08:00:00', 126, NULL, 'Cancelled');
-insert into reservation values (22014, '2018-02-19 08:00:00', '2018-02-23 20:00:00', 107, NULL, 'Cancelled');
-insert into reservation values (22015, '2018-02-21 08:00:00', '2018-03-10 20:00:00', 107, 22014, 'Ongoing');
-insert into reservation values (22016, '2017-10-09 08:00:00', '2017-10-09 21:00:00', 107, NULL, 'Cancelled');
-insert into reservation values (22017, '2017-10-09 08:00:00', '2017-10-09 21:00:00', 107, 22016, 'Completed');
+insert into reservation values (22014, '2018-02-19 08:00:00', '2018-02-23 20:00:00', 101, NULL, 'Cancelled');
+insert into reservation values (22015, '2018-02-21 08:00:00', '2018-03-10 20:00:00', 101, 22014, 'Ongoing');
+insert into reservation values (22016, '2017-10-09 08:00:00', '2017-10-09 21:00:00', 101, NULL, 'Cancelled');
+insert into reservation values (22017, '2017-10-09 08:00:00', '2017-10-09 21:00:00', 101, 22016, 'Completed');
 -- for shared reservation
 insert into reservation values (22030, '2018-03-26 10:00:00', '2018-03-29 16:00:00', 123, NULL, 'Confirmed');
 

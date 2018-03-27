@@ -6,8 +6,8 @@ create table q4(
 );
 
 -- find changed reservations by customer under 30 in recent 18 months
-drop view if exists count_changed_reserv cascade;
-create view count_changed_reserv as
+drop view if exists changed_reserv cascade;
+create view changed_reserv as
 	select r1.id, c.email, r1.from_date
 	from reservation r1 join reservation r2
 			on r1.id = r2.old_reservation_id and
