@@ -53,6 +53,8 @@ insert into reservation values (22008, '2018-03-10 10:00:00', '2018-03-16 20:00:
 
 -- customer_reservation
 insert into customer_reservation values ('j.s@mail.com', 22001);
+insert into customer_reservation values ('s.hilbert@mail.com', 22002);
+insert into customer_reservation values ('s.hilbert@mail.com', 22003);
 insert into customer_reservation values ('a.n@mail.com', 22032);
 insert into customer_reservation values ('malik_aa@mail.com', 22032);
 -- for shared cus_reservation
