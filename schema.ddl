@@ -7,9 +7,9 @@
 
 
 -- https://piazza.com/class/jc8j5fv9n7e39n?cid=787
--- check the age of cutomer > 0
+-- check the age of customer > 0
 -- check the number of seat > 0
--- maku sure the customer have license
+-- make sure the customer have license
 -- customers can not reserve a car that is not available in time he/ she want to reserve. (if the status is not cancelled)
 
 
@@ -31,17 +31,18 @@ create table model(
     name VARCHAR(50) not null,
     vehicle_type VARCHAR(20) not null,
     model_number INT not null,
-    capacity INT not null
+    capacity INT not null,
+    check(capacity > 0)
 );
 
 
 CREATE TABLE rental_station(
- station_code INT primary key,
- -- The name of the station
- name VARCHAR(50) NOT NULL UNIQUE,
- address VARCHAR(100) NOT NULL,
- area_code VARCHAR(10) NOT NULL,
- city VARCHAR(50) NOT NULL
+    station_code INT primary key,
+    -- The name of the station
+    name VARCHAR(50) NOT NULL UNIQUE,
+    address VARCHAR(100) NOT NULL,
+    area_code VARCHAR(10) NOT NULL,
+    city VARCHAR(50) NOT NULL
 );
 
 
@@ -49,7 +50,7 @@ create table car(
     id INT PRIMARY KEY,
     license_plate_number VARCHAR(10) not null unique,
     station_code INT REFERENCES rental_station(station_code),
-    model_id INT REFERENCES model(id)
+    model_id INT REFERENCES model(id),
 );
 
 
