@@ -2,6 +2,10 @@
 -- available at https://www.avis.ca/
 -- comment that answers these questions:
 -- 1. What constraints from the domain could not be enforced?
+-- One reservation can only be cancelled once and the cancceled reservation's to_date should < the new reservation's from_date.
+-- Also, you should update the reserv_status in a sequence of Confirmed -> Ongoing -> Completed, and you cannot update from completed to cancelled, or Ongoing to confirmed.
+-- These constraints cannot be enforced by sql. 
+
 
 -- 2. What constraints that could have been enforced were not enforced? Why not?
 
