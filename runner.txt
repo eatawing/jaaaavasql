@@ -9,3 +9,7 @@
 \i q3.sql
 \echo -- Query 4:
 \i q4.sql
+select * from q1;
+select * from q2;
+select * from q3;
+select * from q4;

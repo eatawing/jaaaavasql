@@ -62,13 +62,14 @@ create table reservation(
     to_date TIMESTAMP not null,
     car_id INT references car(id),
     old_reservation_id INT references reservation(id),
-    status reserv_status not null
+    status reserv_status not null,
+    check(from_date <= to_date)
 );
 
 CREATE TABLE customer_reservation(
- customer_email VARCHAR(50) REFERENCES Customer(email),
- reservation_id INT REFERENCES Reservation(id),
- UNIQUE(customer_email, reservation_id)
+    customer_email VARCHAR(50) REFERENCES Customer(email),
+    reservation_id INT REFERENCES Reservation(id),
+    UNIQUE(customer_email, reservation_id)
 );
 
 

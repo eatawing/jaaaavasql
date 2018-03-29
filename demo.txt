@@ -1,0 +1,273 @@
+csc343h-liyang39=> \i runner.txt                                                                
+-- Loading schema and data:                                                                     
+psql:schema.ddl:17: NOTICE:  drop cascades to 26 other objects                                  
+DETAIL:  drop cascades to table carschema.customer
+drop cascades to table carschema.model
+drop cascades to table carschema.rental_station
+drop cascades to table carschema.car
+drop cascades to type carschema.reserv_status
+drop cascades to table carschema.reservation
+drop cascades to table carschema.customer_reservation
+drop cascades to table carschema.q1
+drop cascades to view carschema.old_cancelled_reserv
+drop cascades to view carschema.email_reserv
+drop cascades to view carschema.num_cancelled_reserv
+drop cascades to view carschema.num_normal_reserv
+drop cascades to view carschema.email_can_norm
+drop cascades to view carschema.ratios
+drop cascades to view carschema.top_two_ratios
+drop cascades to table carschema.q2
+drop cascades to view carschema.not_cancelled_reser
+drop cascades to view carschema.shared_reserv
+drop cascades to table carschema.q3
+drop cascades to view carschema.completed_2017_reser
+drop cascades to view carschema.toronto_station
+drop cascades to view carschema.completed_2017_toronto_reser
+drop cascades to view carschema.model_rent_count
+drop cascades to table carschema.q4
+drop cascades to view carschema.changed_reserv
+drop cascades to view carschema.count_changed_reserv
+DROP SCHEMA
+CREATE SCHEMA
+SET
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TYPE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+-- Query 1:
+SET
+psql:q1.sql:2: NOTICE:  table "q1" does not exist, skipping
+DROP TABLE
+CREATE TABLE
+psql:q1.sql:12: NOTICE:  view "old_cancelled_reserv" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q1.sql:22: NOTICE:  view "email_reserv" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q1.sql:29: NOTICE:  view "num_cancelled_reserv" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q1.sql:37: NOTICE:  view "num_normal_reserv" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q1.sql:47: NOTICE:  view "email_can_norm" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q1.sql:53: NOTICE:  view "ratios" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q1.sql:64: NOTICE:  view "top_two_ratios" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+INSERT 0 2
+-- Query 2:
+SET
+psql:q2.sql:3: NOTICE:  table "q2" does not exist, skipping
+DROP TABLE
+CREATE TABLE
+psql:q2.sql:14: NOTICE:  view "not_cancelled_reser" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q2.sql:21: NOTICE:  view "shared_reserv" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+INSERT 0 2
+-- Query 3:
+SET
+psql:q3.sql:3: NOTICE:  table "q3" does not exist, skipping
+DROP TABLE
+CREATE TABLE
+psql:q3.sql:13: NOTICE:  view "completed_2017_reser" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q3.sql:23: NOTICE:  view "toronto_station" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q3.sql:30: NOTICE:  view "completed_2017_toronto_reser" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q3.sql:42: NOTICE:  view "model_rent_count" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+INSERT 0 1
+-- Query 4:
+SET
+psql:q4.sql:2: NOTICE:  table "q4" does not exist, skipping
+DROP TABLE
+CREATE TABLE
+psql:q4.sql:9: NOTICE:  view "changed_reserv" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+psql:q4.sql:21: NOTICE:  view "count_changed_reserv" does not exist, skipping
+DROP VIEW
+CREATE VIEW
+INSERT 0 1
+       email       | cancel_ratio 
+-------------------+--------------
+ jj.swtz@mail.com  |            1
+ malik_aa@mail.com |          0.5
+(2 rows)
+
+ customer_email | num_shared_reservations 
+----------------+-------------------------
+ a.n@mail.com   |                       1
+ cyngu@mail.com |                       1
+(2 rows)
+
+ model_name 
+------------
+ BMW X5
+(1 row)
+
+   customer_email   
+--------------------
+ s.hilbert@mail.com
+(1 row)
