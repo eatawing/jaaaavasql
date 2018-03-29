@@ -1,5 +1,11 @@
+--------------------------------------------------------
 --  1. What constraints from the domain could not be enforced?
- 
+--     1) One reservation can only be cancelled once and the cancceled reservation's to_date should 
+--        be earlier than the new reservation's from_date.
+--     2) Reservation status should be updated in a sequence of Confirmed -> Ongoing -> Completed, 
+--        i.e. it cannot be updated from Completed to Cancelled, or Ongoing to Confirmed.
+--     These constraints cannot be enforced by sql. 
+--
 --  2. What constraints that could have been enforced were not enforced? Why not?
 --     1) We could have added a constraint that each customer must have a valid driver's license,
 --        however, there is no information about that in the databse.
@@ -10,8 +16,8 @@
 --     4) All cars cannot be rented for more than once in the same time. The problem is the same as 3).
 --     5) Rental station area code shall match the city where it locates. But we don't have relevant 
 --        database to enforce the constraint.
- 
 --------------------------------------------------------
+
 drop schema if exists carschema cascade;
 create schema carschema;
 
